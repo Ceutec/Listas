@@ -33,7 +33,7 @@ public:
         }
     }
 
-    void agregar(Nodo *nuevo)
+    void agregarAlInicio(Nodo *nuevo)
     {
         if(inicio == NULL)
         {
@@ -44,14 +44,30 @@ public:
             inicio = nuevo;
         }
     }
+
+    void agregarAlFinal(Nodo *nuevo)
+    {
+        if(inicio == NULL)
+        {
+            inicio = nuevo;
+        }else
+        {
+            Nodo*temp = inicio;
+            while(temp->sig!=NULL)
+            {
+                temp=temp->sig;
+            }
+            temp->sig = nuevo;
+        }
+    }
 };
 
 int main()
 {
     Lista l;
-    l.agregar(new Nodo(1));
-    l.agregar(new Nodo(2));
-    l.agregar(new Nodo(3));
+    l.agregarAlFinal(new Nodo(1));
+    l.agregarAlFinal(new Nodo(2));
+    l.agregarAlFinal(new Nodo(3));
     l.imprimir();
     return 0;
 }
