@@ -1,22 +1,25 @@
 #include <iostream>
+#include <list>
 using namespace std;
 
+template <typename Tipo>
 class Nodo
 {
 public:
-    int num;
+    Tipo num;
     Nodo* sig;
-    Nodo(int num)
+    Nodo(Tipo num)
     {
         this->num = num;
         this->sig = NULL;
     }
 };
 
+template <typename Tipo>
 class Lista
 {
 public:
-    Nodo* inicio;
+    Nodo<Tipo>* inicio;
 
     Lista()
     {
@@ -25,7 +28,7 @@ public:
 
     void imprimir()
     {
-        for(Nodo* temp = inicio;
+        for(Nodo<Tipo>* temp = inicio;
             temp!=NULL;
             temp = temp->sig)
         {
@@ -33,7 +36,7 @@ public:
         }
     }
 
-    void agregarAlInicio(Nodo *nuevo)
+    void agregarAlInicio(Nodo<Tipo> *nuevo)
     {
         if(inicio == NULL)
         {
@@ -45,14 +48,14 @@ public:
         }
     }
 
-    void agregarAlFinal(Nodo *nuevo)
+    void agregarAlFinal(Nodo<Tipo> *nuevo)
     {
         if(inicio == NULL)
         {
             inicio = nuevo;
         }else
         {
-            Nodo*temp = inicio;
+            Nodo<Tipo>*temp = inicio;
             while(temp->sig!=NULL)
             {
                 temp=temp->sig;
@@ -64,10 +67,16 @@ public:
 
 int main()
 {
-    Lista l;
-    l.agregarAlFinal(new Nodo(1));
-    l.agregarAlFinal(new Nodo(2));
-    l.agregarAlFinal(new Nodo(3));
-    l.imprimir();
+    Lista<char> mi_lista;
+    mi_lista.agregarAlFinal(new Nodo<char>('a'));
+    mi_lista.agregarAlFinal(new Nodo<char>('b'));
+    mi_lista.agregarAlFinal(new Nodo<char>('c'));
+    mi_lista.imprimir();
     return 0;
 }
+
+
+
+
+
+
