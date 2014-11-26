@@ -1,4 +1,5 @@
 # depslib dependency file v1.0
-1416407245 source:/home/turupawn/Projects/Codeblocks/Clases/Progra3Ceutec/Listas/main.cpp
+1416839013 source:/home/turupawn/Projects/Codeblocks/Clases/Progra3Ceutec/Listas/main.cpp
 	<iostream>
+	<list>
 
