@@ -36,8 +36,10 @@ public:
         }
     }
 
-    void agregarAlInicio(Nodo<Tipo> *nuevo)
+    void agregarAlInicio(Tipo valor_nuevo)
     {
+        Nodo<Tipo> *nuevo = new Nodo<Tipo>(valor_nuevo);
+
         if(inicio == NULL)
         {
             inicio = nuevo;
@@ -48,8 +50,10 @@ public:
         }
     }
 
-    void agregarAlFinal(Nodo<Tipo> *nuevo)
+    void agregarAlFinal(Tipo valor_nuevo)
     {
+        Nodo<Tipo> *nuevo = new Nodo<Tipo>(valor_nuevo);
+
         if(inicio == NULL)
         {
             inicio = nuevo;
@@ -63,15 +67,38 @@ public:
             temp->sig = nuevo;
         }
     }
+
+    void borrar(Tipo valor_a_borrar)
+    {
+        if(inicio->num == valor_a_borrar)
+        {
+            Nodo<Tipo>* borrar = inicio;
+            inicio = inicio->sig;
+            delete borrar;
+        }else
+        {
+            Nodo<Tipo>* temp = inicio;
+            while(temp->sig->num!=valor_a_borrar)
+            {
+                temp=temp->sig;
+                if(temp->sig==NULL)
+                    return;
+            }
+            Nodo<Tipo>* borrar = temp->sig;
+            temp->sig = temp->sig->sig;
+            delete temp->sig;
+        }
+    }
 };
 
 int main()
 {
-    Lista<char> mi_lista;
-    mi_lista.agregarAlFinal(new Nodo<char>('a'));
-    mi_lista.agregarAlFinal(new Nodo<char>('b'));
-    mi_lista.agregarAlFinal(new Nodo<char>('c'));
-    mi_lista.imprimir();
+    Lista<int> mi_lista;
+    while(1)
+    {
+        mi_lista.agregarAlFinal(10);
+        mi_lista.borrar(10);
+    }
     return 0;
 }
 
